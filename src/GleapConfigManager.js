@@ -3,7 +3,6 @@ import Gleap, {
   GleapFeedbackButtonManager,
   GleapFrameManager,
   GleapNotificationManager,
-  GleapReplayRecorder,
   GleapSession,
   GleapTranslationManager
 } from "./Gleap";
@@ -140,13 +139,11 @@ export default class GleapConfigManager {
       GleapNotificationManager.getInstance().updateContainerStyle();
 
       if (flowConfig.enableWebReplays) {
-        GleapReplayRecorder.getInstance().start();
-      } else {
-        GleapReplayRecorder.getInstance().stop();
+        console.error("enableWebReplays should be disabled")
       }
 
       if (flowConfig.enableNetworkLogs || flowConfig.networkLogPropsToIgnore || flowConfig.networkLogBlacklist) {
-        console.error("enableWebReplays should be disabled")
+        console.error("enableNetworkLogs, networkLogPropsToIgnore, networkLogBlacklist should be disabled")
       }
 
       GleapTranslationManager.getInstance().updateRTLSupport();

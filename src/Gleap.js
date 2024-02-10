@@ -12,7 +12,6 @@ import GleapFeedbackButtonManager from "./GleapFeedbackButtonManager";
 import GleapCustomDataManager from "./GleapCustomDataManager";
 import GleapEventManager from "./GleapEventManager";
 import GleapCustomActionManager from "./GleapCustomActionManager";
-import GleapReplayRecorder from "./GleapReplayRecorder";
 import GleapMarkerManager from "./GleapMarkerManager";
 import GleapTranslationManager from "./GleapTranslationManager";
 import GleapShortcutListener from "./GleapShortcutListener";
@@ -232,7 +231,6 @@ class Gleap {
    * @returns
    */
   static destroy() {
-    GleapReplayRecorder.getInstance().stop();
     GleapStreamedEvent.getInstance().stop();
     GleapFrameManager.getInstance().destroy();
     GleapFeedbackButtonManager.getInstance().toggleFeedbackButton(false);
@@ -354,7 +352,7 @@ class Gleap {
    * @param {*} options 
    */
   static setReplayOptions(options) {
-    GleapReplayRecorder.getInstance().setOptions(options);
+    // noop
   }
 
   /**
@@ -1146,8 +1144,7 @@ class Gleap {
    * Takes the current replay and assigns it to the global data array.
    */
   takeCurrentReplay() {
-    const replayData = GleapReplayRecorder.getInstance().getReplayData();
-    this.setGlobalDataItem("webReplay", replayData);
+    // noop
   }
 }
 
@@ -1172,7 +1169,6 @@ export {
   GleapShortcutListener,
   GleapMarkerManager,
   GleapTranslationManager,
-  GleapReplayRecorder,
   GleapFeedback,
   GleapConsoleLogManager,
   GleapCustomActionManager,
