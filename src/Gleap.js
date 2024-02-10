@@ -23,17 +23,6 @@ import GleapTagManager from "./GleapTagManager";
 import GleapAdminManager from "./GleapAdminManager";
 import GleapProductTours from "./GleapProductTours";
 
-if (typeof HTMLCanvasElement !== "undefined" && HTMLCanvasElement.prototype && HTMLCanvasElement.prototype.__originalGetContext === undefined) {
-  HTMLCanvasElement.prototype.__originalGetContext =
-    HTMLCanvasElement.prototype.getContext;
-  HTMLCanvasElement.prototype.getContext = function (type, options) {
-    return this.__originalGetContext(type, {
-      ...options,
-      preserveDrawingBuffer: true,
-    });
-  };
-}
-
 class Gleap {
   static invoked = true;
   static silentCrashReportSent = false;
