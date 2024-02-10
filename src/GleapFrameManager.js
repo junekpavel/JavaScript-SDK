@@ -13,7 +13,6 @@ import Gleap, {
   GleapCustomDataManager,
   GleapMetaDataManager,
   GleapConsoleLogManager,
-  GleapNetworkIntercepter,
   GleapTagManager,
   GleapBannerManager,
 } from "./Gleap";
@@ -487,7 +486,7 @@ export default class GleapFrameManager {
           customData: GleapCustomDataManager.getInstance().getCustomData(),
           metaData: GleapMetaDataManager.getInstance().getMetaData(),
           consoleLog: GleapConsoleLogManager.getInstance().getLogs(),
-          networkLogs: GleapNetworkIntercepter.getInstance().getRequests(),
+          networkLogs: [],
           customEventLog: GleapStreamedEvent.getInstance().getEventArray()
         };
 

@@ -1,5 +1,12 @@
-import { loadFromGleapCache, saveToGleapCache } from "./GleapHelper";
-import Gleap, { GleapFrameManager, GleapFeedbackButtonManager, GleapTranslationManager, GleapNetworkIntercepter, GleapSession, GleapReplayRecorder, GleapNotificationManager } from "./Gleap";
+import {loadFromGleapCache, saveToGleapCache} from "./GleapHelper";
+import Gleap, {
+  GleapFeedbackButtonManager,
+  GleapFrameManager,
+  GleapNotificationManager,
+  GleapReplayRecorder,
+  GleapSession,
+  GleapTranslationManager
+} from "./Gleap";
 
 const parseIntWithDefault = (val, def) => {
   const parsed = parseInt(val);
@@ -138,18 +145,8 @@ export default class GleapConfigManager {
         GleapReplayRecorder.getInstance().stop();
       }
 
-      if (flowConfig.enableNetworkLogs) {
-        GleapNetworkIntercepter.getInstance().start();
-      }
-
-      GleapNetworkIntercepter.getInstance().setLoadAllResources(flowConfig.sendNetworkResources ? true : false);
-
-      if (flowConfig.networkLogPropsToIgnore) {
-        GleapNetworkIntercepter.getInstance().setFilters(flowConfig.networkLogPropsToIgnore);
-      }
-
-      if (flowConfig.networkLogBlacklist) {
-        GleapNetworkIntercepter.getInstance().setBlacklist(flowConfig.networkLogBlacklist);
+      if (flowConfig.enableNetworkLogs || flowConfig.networkLogPropsToIgnore || flowConfig.networkLogBlacklist) {
+        console.error("enableWebReplays should be disabled")
       }
 
       GleapTranslationManager.getInstance().updateRTLSupport();

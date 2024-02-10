@@ -1,6 +1,6 @@
 import { startScreenCapture } from "./ScreenCapture";
 import { GleapScreenRecorder } from "./GleapScreenRecorder";
-import Gleap, { GleapConsoleLogManager, GleapStreamedEvent, GleapSession, GleapCustomDataManager, GleapMetaDataManager, GleapNetworkIntercepter, GleapTagManager } from "./Gleap";
+import Gleap, { GleapConsoleLogManager, GleapStreamedEvent, GleapSession, GleapCustomDataManager, GleapMetaDataManager, GleapTagManager } from "./Gleap";
 
 export default class GleapFeedback {
     excludeData = {};
@@ -34,7 +34,6 @@ export default class GleapFeedback {
         this.customData = GleapCustomDataManager.getInstance().getCustomData();
         this.metaData = GleapMetaDataManager.getInstance().getMetaData();
         this.consoleLog = GleapConsoleLogManager.getInstance().getLogs();
-        this.networkLogs = GleapNetworkIntercepter.getInstance().getRequests();
         this.customEventLog = GleapStreamedEvent.getInstance().getEventArray();
 
         var dataPromises = [];

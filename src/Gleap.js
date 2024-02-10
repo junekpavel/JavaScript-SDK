@@ -1,5 +1,4 @@
 import { injectStyledCSS } from "./UI";
-import GleapNetworkIntercepter from "./GleapNetworkIntercepter";
 import { gleapDataParser, runFunctionWhenDomIsReady } from "./GleapHelper";
 import GleapSession from "./GleapSession";
 import GleapStreamedEvent from "./GleapStreamedEvent";
@@ -140,8 +139,7 @@ class Gleap {
    * Attaches external network logs.
    */
   static attachNetworkLogs(networkLogs) {
-    GleapNetworkIntercepter.getInstance().externalRequests =
-      gleapDataParser(networkLogs);
+    // noop
   }
 
   /**
@@ -325,14 +323,14 @@ class Gleap {
    * Sets the maximum network request count.
    */
   static setMaxNetworkRequests(maxRequests) {
-    GleapNetworkIntercepter.getInstance().setMaxRequests(maxRequests);
+    // noop
   }
 
   /**
    * Sets the maximum network request count.
    */
   static startNetworkLogger() {
-    GleapNetworkIntercepter.getInstance().start();
+    // noop
   }
 
   /**
@@ -340,7 +338,7 @@ class Gleap {
    * @param {Array} networkLogBlacklist
    */
   static setNetworkLogsBlacklist(networkLogBlacklist) {
-    GleapNetworkIntercepter.getInstance().setBlacklist(networkLogBlacklist);
+    // noop
   }
 
   /**
@@ -348,7 +346,7 @@ class Gleap {
    * @param {Array} filters
    */
   static setNetworkLogPropsToIgnore(filters) {
-    GleapNetworkIntercepter.getInstance().setFilters(filters);
+    // noop
   }
 
   /**
@@ -1167,7 +1165,6 @@ if (typeof window !== "undefined") {
 }
 
 export {
-  GleapNetworkIntercepter,
   GleapAudioManager,
   GleapNotificationManager,
   GleapBannerManager,
