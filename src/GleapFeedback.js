@@ -1,4 +1,3 @@
-import { startScreenCapture } from "./ScreenCapture";
 import { GleapScreenRecorder } from "./GleapScreenRecorder";
 import Gleap, { GleapConsoleLogManager, GleapStreamedEvent, GleapSession, GleapCustomDataManager, GleapMetaDataManager, GleapTagManager } from "./Gleap";
 
@@ -53,19 +52,6 @@ export default class GleapFeedback {
                 }
             });
             dataPromises.push(recordingUrlPromise);
-        }
-
-        // Prepare screenshot
-        if (!(this.excludeData && this.excludeData.screenshot)) {
-            var screenshotDataPromise = startScreenCapture(gleapInstance.isLiveMode()).then((screenshotData) => {
-                if (screenshotData) {
-                    const snapshotPosition = gleapInstance.getGlobalDataItem("snapshotPosition");
-                    screenshotData["x"] = snapshotPosition.x;
-                    screenshotData["y"] = snapshotPosition.y;
-                    this.screenshotData = screenshotData;
-                }
-            });
-            dataPromises.push(screenshotDataPromise);
         }
 
         return Promise.all(dataPromises);
